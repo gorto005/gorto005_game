@@ -19,14 +19,9 @@ p {
     color: lightgrey;
 }
 </style>
-</head>
-<body onload="startGame()" background="background.png">
-<center>
-<title>IronRealm</title>
-<h1>IronRealm</h1>
+<script src="./GamePiece.js"></script>
 <script>
-
-var myGamePiece;
+var players;
 var xSpeed = 2;
 var ySpeed = 2;
 var xDiagonalSpeed = xSpeed / Math.sqrt(2);
@@ -35,13 +30,16 @@ var mySound;
 var walkingRightImages = ["sprite1.png", "test2.png", "test3.png"];
 var walkingLeftImages = ["sprite1left.png", "sprite1left.png", "sprite1left.png"];
 var walkPosition = 0;
-
 function startGame() {
-    myGamePiece = new component(32, 64, "sprite1.png", 10, 120, "image");
-    mySound = new sound("gravel1.wav");
+    player1 = new GamePiece("sprite1.png", walkingRightImages, 
+            walkingLeftImages, "gravel1.wav", 10, 120, xSpeed, ySpeed,
+            65, 68, 87, 83);
+    player2 = new GamePiece("sprite1.png", walkingRightImages, 
+            walkingLeftImages, "gravel1.wav", 50, 120, xSpeed, ySpeed,
+            37, 39, 38, 40);
+    players = [player1, player2];
     myGameArea.start();
 }
-
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
@@ -67,140 +65,21 @@ var myGameArea = {
         clearInterval(this.interval);
     }
 }
-
-function component(width, height, color, x, y, type) {
-    this.type = type;
-    if (type == "image") {
-        this.image = new Image();
-        this.image.src = color;
-    }
-    this.width = width;
-    this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;    
-    this.x = x;
-    this.y = y;    
-    this.update = function() {
-        ctx = myGameArea.context;
-        if (type == "image") {
-            ctx.drawImage(this.image, 
-                this.x, 
-                this.y,
-                this.width, this.height);
-        } else {
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-    }
-    this.newPos = function() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-    }
-}
-
-
 function updateGameArea() {
     myGameArea.clear();
-    myGamePiece.newPos();
-    myGamePiece.speedX = 0;
-    myGamePiece.speedY = 0;
-
-    myGamePiece.image.src = "sprite1.png";
-
-    if (myGameArea.keys && myGameArea.keys[65]) {
-        moveleft();
-            mySound.play();
-        myGamePiece.image.src = walkingLeftImages[walkPosition];
+    ctx = myGameArea.context;
+    for (var i = 0, len = players.length; i < len; i++) {
+        players[i].move(myGameArea.keys);
+        players[i].update(ctx);
     }
-    if (myGameArea.keys && myGameArea.keys[68]) {
-        moveright(); 
-        mySound.play();
-        myGamePiece.image.src = walkingRightImages[walkPosition];
-    }
-    if (myGameArea.keys && myGameArea.keys[87]) {
-        moveup(); 
-        mySound.play();
-        myGamePiece.image.src = walkingRightImages[walkPosition];
-    }
-    if (myGameArea.keys && myGameArea.keys[83]) {
-        movedown(); 
-        mySound.play();
-        myGamePiece.image.src = walkingRightImages[walkPosition];
-    }
-    // left & up
-    if (myGameArea.keys && myGameArea.keys[65] && myGameArea.keys[87]) {
-        myGamePiece.speedX = -xDiagonalSpeed;
-        myGamePiece.speedY = -yDiagonalSpeed;
-        mySound.play();
-        myGamePiece.image.src = walkingLeftImages[walkPosition];
-    }
-    //left & down
-    if (myGameArea.keys && myGameArea.keys[65] && myGameArea.keys[83]) {
-        myGamePiece.speedX = -xDiagonalSpeed;
-        myGamePiece.speedY = yDiagonalSpeed;
-        mySound.play();
-        myGamePiece.image.src = walkingLeftImages[walkPosition];  
-    }
-    //right & up
-    if (myGameArea.keys && myGameArea.keys[68] && myGameArea.keys[87]) {
-        myGamePiece.speedX = xDiagonalSpeed;
-        myGamePiece.speedY = -yDiagonalSpeed;
-        mySound.play();
-        myGamePiece.image.src = walkingRightImages[walkPosition];
-    }
-    //right & down
-    if (myGameArea.keys && myGameArea.keys[68] && myGameArea.keys[83]) {
-        myGamePiece.speedX = xDiagonalSpeed;
-        myGamePiece.speedY = yDiagonalSpeed;
-        mySound.play();
-        myGamePiece.image.src = walkingRightImages[walkPosition];;
-    }
-    walkPosition++;
-    if (walkPosition >= walkingRightImages.length) {
-        walkPosition = 0;
-    }
-
-    myGamePiece.update();
-
-}
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-        this.sound.play();
-    }
-    this.stop = function(){
-        this.sound.pause();
-    }
-}
-
-
-function moveup() {
-    myGamePiece.speedY = -2; 
-}
-
-function movedown() {
-    myGamePiece.speedY = 2; 
-}
-
-function moveleft() {
-    myGamePiece.speedX = -2; 
-}
-
-function moveright() {
-    myGamePiece.speedX = 2; 
-}
-
-function clearmove() {
-    myGamePiece.speedX = 0; 
-    myGamePiece.speedY = 0; 
-     myGamePiece.image.src = "sprite1.png";
 }
 </script>
+</head>
+<body onload="startGame()" background="background.png">
+<center>
+<title>IronRealm</title>
+<h1>IronRealm</h1>
+
 </center>
 </body>
 </html>
