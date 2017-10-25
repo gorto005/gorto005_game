@@ -21,10 +21,6 @@ p {
 </style>
 <script src="./GamePiece.js"></script>
 <script>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9668b110864dc96303f026a76ccc3966a36dbe79
 var players;
 var xSpeed = 2;
 var ySpeed = 2;
@@ -35,7 +31,6 @@ var walkingRightImages = ["sprite1.png", "test2.png", "test3.png"];
 var walkingLeftImages = ["sprite1left.png", "sprite1left.png", "sprite1left.png"];
 var walkPosition = 0;
 function startGame() {
-<<<<<<< HEAD
     player1 = new GamePiece("sprite1.png", walkingRightImages, 
             walkingLeftImages, "gravel1.wav", 10, 120, xSpeed, ySpeed,
             65, 68, 87, 83);
@@ -43,19 +38,6 @@ function startGame() {
             walkingLeftImages, "gravel1.wav", 50, 120, xSpeed, ySpeed,
             37, 39, 38, 40);
     players = [player1, player2];
-=======
-
-    player1 = new GamePiece("sprite1.png", walkingRightImages, 
-            walkingLeftImages, "gravel1.wav", 10, 120, xSpeed, ySpeed,
-            65, 68, 87, 83);
-
-    player2 = new GamePiece("sprite1.png", walkingRightImages, 
-            walkingLeftImages, "gravel1.wav", 50, 120, xSpeed, ySpeed,
-            37, 39, 38, 40);
-
-    players = [player1, player2];
-
->>>>>>> 9668b110864dc96303f026a76ccc3966a36dbe79
     myGameArea.start();
 }
 var myGameArea = {
@@ -83,29 +65,14 @@ var myGameArea = {
         clearInterval(this.interval);
     }
 }
-<<<<<<< HEAD
 function updateGameArea() {
     myGameArea.clear();
     ctx = myGameArea.context;
-=======
-
-function updateGameArea() {
-    myGameArea.clear();
-
-    ctx = myGameArea.context;
-
->>>>>>> 9668b110864dc96303f026a76ccc3966a36dbe79
     for (var i = 0, len = players.length; i < len; i++) {
         players[i].move(myGameArea.keys);
         players[i].update(ctx);
     }
-<<<<<<< HEAD
 }
-=======
-
-}
-
->>>>>>> 9668b110864dc96303f026a76ccc3966a36dbe79
 </script>
 </head>
 <body onload="startGame()" background="background.png">
