@@ -3,23 +3,13 @@
 <head>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="C:\Users\gorto\Documents\GitHub\sat-js/SAT.js"></script>
+    <script src="SAT.js"></script>
     <script src="examples.js"></script>
     <script>
-    // Simple onCollide handler that changes colors of displayed items.
-    function displayCollision(other, response) {
-      this.displayAttrs.fill = response.aInB ? '#0F0' : '#F00';
-      other.displayAttrs.fill = response.bInA ? '#0F0' : '#F00';
-    }
-    // onTick handler that restores "non collided" color
-    function restoreNoCollisionColors() {
-      this.displayAttrs.fill = '#CCC';
-    }
     // Default entity options that will just highlight entities when they overlap
     var defaultEntityOptions = {
-      solid: false,
-      draggable: true,
-      onCollide: displayCollision,
+      solid: true,
+      onCollide: speedX = 0,speedY = 0,
       onTick: restoreNoCollisionColors
     };
     </script>
@@ -61,6 +51,11 @@ function startGame() {
             37, 39, 38, 40);
     players = [player1, player2];
     myGameArea.start();
+(function () {
+      var world = new World(canvas);
+      var p1Body = world.addEntity(B(V(10,120), 32, 32), defaultEntityOptions);
+      var p2Body = world.addEntity(B(V(50,120), 32, 32), defaultEntityOptions);
+    }());
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
