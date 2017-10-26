@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="C:\Users\gorto\Documents\GitHub\sat-js/SAT.js"></script>
+    <script src="examples.js"></script>
+    <script>
+    // Simple onCollide handler that changes colors of displayed items.
+    function displayCollision(other, response) {
+      this.displayAttrs.fill = response.aInB ? '#0F0' : '#F00';
+      other.displayAttrs.fill = response.bInA ? '#0F0' : '#F00';
+    }
+    // onTick handler that restores "non collided" color
+    function restoreNoCollisionColors() {
+      this.displayAttrs.fill = '#CCC';
+    }
+    // Default entity options that will just highlight entities when they overlap
+    var defaultEntityOptions = {
+      solid: false,
+      draggable: true,
+      onCollide: displayCollision,
+      onTick: restoreNoCollisionColors
+    };
+    </script>
 <link rel="icon" href="icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
@@ -27,8 +49,8 @@ var ySpeed = 2;
 var xDiagonalSpeed = xSpeed / Math.sqrt(2);
 var yDiagonalSpeed = ySpeed / Math.sqrt(2);
 var mySound;
-var walkingRightImages = ["sprite1.png", "test2.png", "test3.png"];
-var walkingLeftImages = ["sprite1left.png", "sprite1left.png", "sprite1left.png"];
+var walkingRightImages = ["sprite1.png"];
+var walkingLeftImages = ["sprite1left.png"];
 var walkPosition = 0;
 function startGame() {
     player1 = new GamePiece("sprite1.png", walkingRightImages, 
