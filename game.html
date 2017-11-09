@@ -1,71 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="SAT.js"></script>
-    <script src="examples.js"></script>
-    <script>
-    // Default entity options that will just highlight entities when they overlap
-    var defaultEntityOptions = {
-      solid: true,
-      onCollide: speedX = 0,speedY = 0,
-      onTick: restoreNoCollisionColors
-    };
-    </script>
-<link rel="icon" href="icon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-    margin:auto;
-    display: block;
-    background:url(gameback.jpg);
-}
-h1 {
-    font-family:"lucida console", serif;
-    color: #b2240e;
-}
-p {
-    color: lightgrey;
-}
-</style>
-<script src="./GamePiece.js"></script>
-<script>
+    <head>
+        <link rel="icon" href="icon.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"> 
+        <style>
+            canvas {
+                border:1px solid #d3d3d3;
+                background-color: #f1f1f1;
+                margin:auto;
+                display: block;
+                background:url(gameback.jpg);
+            }
+            h1 {
+                font-family:"lucida console", serif;
+                color: #b2240e;
+            }
+            p {
+                color: lightgrey;
+            }
+        </style>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script src="./SAT.js"></script>
+        <script src="./GamePiece.js"></script>
+        <script src="./World.js"></script>
+        <script>
 var players;
+var world = new World();
 var xSpeed = 2;
 var ySpeed = 2;
-var xDiagonalSpeed = xSpeed / Math.sqrt(2);
-var yDiagonalSpeed = ySpeed / Math.sqrt(2);
+var numberOfNPCs = 10;
+// var xDiagonalSpeed = xSpeed / Math.sqrt(2);
+// var yDiagonalSpeed = ySpeed / Math.sqrt(2);
 var mySound;
 var walkingRightImages = ["sprite1.png"];
 var walkingLeftImages = ["sprite1left.png"];
-var walkPosition = 0;
+
 function startGame() {
-    player1 = new GamePiece("sprite1.png", walkingRightImages, 
-            walkingLeftImages, "gravel1.wav", 10, 120, xSpeed, ySpeed,
+
+    player1 = new GamePiece("player", "sprite1.png", walkingRightImages, 
+            walkingLeftImages, "gravel1.wav", 100, 300, xSpeed, ySpeed,
             65, 68, 87, 83);
-    player2 = new GamePiece("sprite1.png", walkingRightImages, 
-            walkingLeftImages, "gravel1.wav", 50, 120, xSpeed, ySpeed,
+    world.addPlayer(player1);
+
+    player2 = new GamePiece("player", "sprite1.png", walkingRightImages, 
+            walkingLeftImages, "gravel1.wav", 800, 300, xSpeed, ySpeed,
             37, 39, 38, 40);
+    world.addPlayer(player2); 
+
+
     players = [player1, player2];
+
+    for (i = 2; i < numberOfNPCs; i++) { 
+        var npcX = Math.floor(Math.random() * world.options.worldWidth);
+        var npcY = Math.floor(Math.random() * world.options.worldHeight)
+        npcPlayer = new GamePiece("npc", "sprite1.png", walkingRightImages, 
+                walkingLeftImages, "gravel1.wav", npcX, npcY, xSpeed, ySpeed,
+                0, 0, 0, 0);
+        world.addPlayer(npcPlayer);
+        console.log("added player " + i);
+        players[i] = npcPlayer;
+    }
+
+
     myGameArea.start();
-(function () {
-      var world = new World(canvas);
-      var p1Body = world.addEntity(B(V(10,120), 32, 32), defaultEntityOptions);
-      var p2Body = world.addEntity(B(V(50,120), 32, 32), defaultEntityOptions);
-    }());
 }
+
+
+
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 900;
-        this.canvas.height = this.canvas.width * 9/16;
+        this.canvas.width = world.options.worldWidth;
+        this.canvas.height = world.options.worldHeight;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 20);
+        this.moveinterval = setInterval(updateGameArea, world.options.interval);
+        this.weaponinterval = setInterval(updateWeapons, 10);
+
         window.addEventListener('keydown', function (e) {
             e.preventDefault();
             myGameArea.keys = (myGameArea.keys || []);
@@ -75,28 +87,28 @@ var myGameArea = {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
         })
         },
-    clear : function() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    },
     stop : function() {
-        clearInterval(this.interval);
+        clearInterval(this.moveinterval);
     }
 }
 function updateGameArea() {
-    myGameArea.clear();
+    world.simulate(myGameArea.keys);
+
     ctx = myGameArea.context;
     for (var i = 0, len = players.length; i < len; i++) {
-        players[i].move(myGameArea.keys);
         players[i].update(ctx);
     }
 }
-</script>
-</head>
-<body onload="startGame()" background="background.png">
-<center>
-<title>IronRealm</title>
-<h1>IronRealm</h1>
 
-</center>
-</body>
+function updateWeapons() {
+
+}
+        </script>
+    </head>
+    <body onload="startGame()" background="background.png">
+        <center>
+            <title>IronRealm</title>
+            <h1>IronRealm</h1>
+        </center>
+    </body>
 </html>
