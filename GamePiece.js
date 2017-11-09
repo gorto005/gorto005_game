@@ -12,6 +12,8 @@ function GamePiece (image,
             moveDownKey) {
     this.defaultimage = new Image();
     this.defaultimage.src = image;
+    this.width = this.defaultimage.width;
+    this.height = this.defaultimage.height;
 
     this.moveRightImages = moveRightImages;
     this.moveRightImage = new Image();

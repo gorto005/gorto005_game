@@ -3,7 +3,7 @@
     <head>
         <link rel="icon" href="icon.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-         <meta charset="UTF-8"> 
+        <meta charset="UTF-8"> 
         <style>
             canvas {
                 border:1px solid #d3d3d3;
@@ -26,8 +26,8 @@
         <script>
 var players;
 var world = new World();
-var xSpeed = 2;
-var ySpeed = 2;
+var xSpeed = 20;
+var ySpeed = 20;
 // var xDiagonalSpeed = xSpeed / Math.sqrt(2);
 // var yDiagonalSpeed = ySpeed / Math.sqrt(2);
 var mySound;
@@ -83,7 +83,7 @@ function updateGameArea() {
 
     ctx = myGameArea.context;
     for (var i = 0, len = players.length; i < len; i++) {
-        players[i].move(myGameArea.keys);
+        // players[i].move(myGameArea.keys);
         players[i].update(ctx);
     }
 }
