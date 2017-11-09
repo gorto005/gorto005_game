@@ -29,6 +29,7 @@ var players;
 var world = new World();
 var xSpeed = 2;
 var ySpeed = 2;
+var numberOfNPCs = 1;
 // var xDiagonalSpeed = xSpeed / Math.sqrt(2);
 // var yDiagonalSpeed = ySpeed / Math.sqrt(2);
 var mySound;
@@ -37,17 +38,30 @@ var walkingLeftImages = ["sprite1left.png"];
 
 function startGame() {
 
-    player1 = new GamePiece("sprite1.png", walkingRightImages, 
-            walkingLeftImages, "gravel1.wav", 10, 120, xSpeed, ySpeed,
+    player1 = new GamePiece("player", "sprite1.png", walkingRightImages, 
+            walkingLeftImages, "gravel1.wav", 100, 300, xSpeed, ySpeed,
             65, 68, 87, 83);
     world.addPlayer(player1);
 
-    player2 = new GamePiece("sprite1.png", walkingRightImages, 
-            walkingLeftImages, "gravel1.wav", 50, 120, xSpeed, ySpeed,
+    player2 = new GamePiece("player", "sprite1.png", walkingRightImages, 
+            walkingLeftImages, "gravel1.wav", 800, 300, xSpeed, ySpeed,
             37, 39, 38, 40);
     world.addPlayer(player2); 
 
+
     players = [player1, player2];
+
+    for (i = players.length; i < numberOfNPCs + players.length; i++) { 
+        var npcX = Math.floor(Math.random() * world.options.worldWidth);
+        var npcY = Math.floor(Math.random() * world.options.worldHeight)
+        npcPlayer = new GamePiece("npc", "sprite1.png", walkingRightImages, 
+                walkingLeftImages, "gravel1.wav", npcX, npcY, xSpeed, ySpeed,
+                0, 0, 0, 0);
+        world.addPlayer(npcPlayer);
+        console.log("added player " + i);
+        players[i] = npcPlayer;
+    }
+
 
     myGameArea.start();
 }
@@ -61,7 +75,9 @@ var myGameArea = {
         this.canvas.height = world.options.worldHeight;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.interval = setInterval(updateGameArea, world.options.interval);
+        this.moveinterval = setInterval(updateGameArea, world.options.interval);
+        this.weaponinterval = setInterval(updateWeapons, 10);
+
         window.addEventListener('keydown', function (e) {
             e.preventDefault();
             myGameArea.keys = (myGameArea.keys || []);
@@ -71,21 +87,21 @@ var myGameArea = {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
         })
         },
-    clear : function() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    },
     stop : function() {
-        clearInterval(this.interval);
+        clearInterval(this.moveinterval);
     }
 }
 function updateGameArea() {
-    myGameArea.clear();
     world.simulate(myGameArea.keys);
 
     ctx = myGameArea.context;
     for (var i = 0, len = players.length; i < len; i++) {
         players[i].update(ctx);
     }
+}
+
+function updateWeapons() {
+
 }
         </script>
     </head>

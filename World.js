@@ -33,7 +33,8 @@ World.prototype = {
                 player.y = world.options.worldHeight - player.height;
             }
         };
-        // Next, calculate collisions
+        // Next, calculate collisions. We iterate of the array of players and compare
+        // two players. That's why the two for loops.
         for (var i = 0; i < players.length - 1; i++) {
             var p1 = players[i];
             var box1 = new SAT.Box(new SAT.Vector(p1.x, p1.y), p1.width, p1.height);
@@ -49,7 +50,6 @@ World.prototype = {
                     p1.y = p1.y - oV.y/2;
                     p2.x = p2.x + oV.x/2;
                     p2.y = p2.y + oV.y/2;
-
                 }
             }
         }

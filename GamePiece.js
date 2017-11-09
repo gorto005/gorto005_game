@@ -1,4 +1,5 @@
-function GamePiece (image,
+function GamePiece (type, //npc or player
+            image,
             moveRightImages,
             moveLeftImages,
             moveSound, 
@@ -10,6 +11,7 @@ function GamePiece (image,
             moveRightKey,
             moveUpKey,
             moveDownKey) {
+    this.type = type;
     this.defaultimage = new Image();
     this.defaultimage.src = image;
     this.width = this.defaultimage.width;
@@ -51,6 +53,8 @@ function GamePiece (image,
 
 GamePiece.prototype = {
     update(ctx) {
+        ctx.clearRect(this.lastx-3, this.lasty-3, this.image.width+6, this.image.height+6);
+
         ctx.drawImage(this.image, 
             this.x, 
             this.y);
@@ -69,37 +73,46 @@ GamePiece.prototype = {
     move (keys) {
         this.lastx = this.x;
         this.lasty = this.y;
-        if (keys && keys[this.moveLeftKey]) {
-            this.moved = true;
-            this.moveLeftImage.src = this.moveLeftImages[this.moveLeftImageCount];
-            this.image = this.moveLeftImage;
-            this.x -= this.speedX;
 
-            if (this.moveLeftImageCount < this.moveLeftImages.length - 1) {
-                this.moveLeftImageCount++;
-            } else {
-                this.moveLeftImageCount = 0;
-            }
-        }
-        if (keys && keys[this.moveRightKey]) {
-            this.moved = true;
-            this.moveRightImage.src = this.moveRightImages[this.moveRightImageCount];
-            this.image = this.moveRightImage;
-            this.x += this.speedX;
+        if (this.type == "player") {
+            if (keys && keys[this.moveLeftKey]) {
+                this.moved = true;
+                this.moveLeftImage.src = this.moveLeftImages[this.moveLeftImageCount];
+                this.image = this.moveLeftImage;
+                this.x -= this.speedX;
 
-            if (this.moveRightImageCount < this.moveRightImages.length - 1) {
-                this.moveRightImageCount++;
-            } else {
-                this.moveRightImageCount = 0;
+                if (this.moveLeftImageCount < this.moveLeftImages.length - 1) {
+                    this.moveLeftImageCount++;
+                } else {
+                    this.moveLeftImageCount = 0;
+                }
             }
-        }
-        if (keys && keys[this.moveUpKey]) {
-            this.moved = true;
-            this.y -= this.speedY; 
-        }
-        if (keys && keys[this.moveDownKey]) {
-            this.moved = true;
-            this.y += this.speedY;
+            if (keys && keys[this.moveRightKey]) {
+                this.moved = true;
+                this.moveRightImage.src = this.moveRightImages[this.moveRightImageCount];
+                this.image = this.moveRightImage;
+                this.x += this.speedX;
+
+                if (this.moveRightImageCount < this.moveRightImages.length - 1) {
+                    this.moveRightImageCount++;
+                } else {
+                    this.moveRightImageCount = 0;
+                }
+            }
+            if (keys && keys[this.moveUpKey]) {
+                this.moved = true;
+                this.y -= this.speedY; 
+            }
+            if (keys && keys[this.moveDownKey]) {
+                this.moved = true;
+                this.y += this.speedY;
+            }
+        } else if (this.type == "npc") {
+            var speed = Math.floor(Math.random() * 10);
+            var vx = Math.floor((Math.random() * 3) - 1) * speed;
+            var vy = Math.floor((Math.random() * 3) - 1) * speed;
+            this.x -= vx;
+            this.y -= vy;
         }
     }
 }
