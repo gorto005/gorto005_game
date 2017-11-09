@@ -1,6 +1,4 @@
-class GamePiece {
-
-    constructor (image,
+function GamePiece (image,
             moveRightImages,
             moveLeftImages,
             moveSound, 
@@ -11,45 +9,43 @@ class GamePiece {
             moveLeftKey,
             moveRightKey,
             moveUpKey,
-            moveDownKey) 
-    {
-        this.defaultimage = new Image();
-        this.defaultimage.src = image;
+            moveDownKey) {
+    this.defaultimage = new Image();
+    this.defaultimage.src = image;
 
-        this.moveRightImages = moveRightImages;
-        this.moveRightImage = new Image();
-        this.moveRightImage.src = this.moveRightImages[0];
-        this.moveRightImageCount = 0;
+    this.moveRightImages = moveRightImages;
+    this.moveRightImage = new Image();
+    this.moveRightImage.src = this.moveRightImages[0];
+    this.moveRightImageCount = 0;
 
-        this.moveLeftImages = moveLeftImages;
-        this.moveLeftImage = new Image();
-        this.moveLeftImage.src = this.moveLeftImages[0];    
-        this.moveLeftImageCount = 0;
+    this.moveLeftImages = moveLeftImages;
+    this.moveLeftImage = new Image();
+    this.moveLeftImage.src = this.moveLeftImages[0];    
+    this.moveLeftImageCount = 0;
 
-        this.image = this.defaultimage;
+    this.image = this.defaultimage;
 
-        this.sound = document.createElement("audio");
-        this.sound.src = moveSound;
-        this.sound.setAttribute("preload", "auto");
-        this.sound.setAttribute("controls", "none");
-        this.sound.style.display = "none";
-        //document.body.appendChild(this.sound);
+    this.sound = document.createElement("audio");
+    this.sound.src = moveSound;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
 
-        this.x = x;
-        this.y = y;
+    this.x = x;
+    this.y = y;
 
-        this.moved = false;
+    this.moved = false;
 
-        this.speedX = speedX;
-        this.speedY = speedY;   
+    this.speedX = speedX;
+    this.speedY = speedY;   
 
-        this.moveLeftKey = moveLeftKey;
-        this.moveRightKey = moveRightKey;
-        this.moveUpKey = moveUpKey;
-        this.moveDownKey = moveDownKey;    
-    }
+    this.moveLeftKey = moveLeftKey;
+    this.moveRightKey = moveRightKey;
+    this.moveUpKey = moveUpKey;
+    this.moveDownKey = moveDownKey;
+}
 
-
+GamePiece.prototype = {
     update(ctx) {
         ctx.drawImage(this.image, 
             this.x, 
@@ -59,16 +55,13 @@ class GamePiece {
         }
         this.moved = false;
         this.image = this.defaultimage;
-    }
-
+    },
     playMoveSound(){
         this.sound.play();
-    }
-
+    },
     stopMoveSound(){
         this.sound.pause();
-    }
-
+    },
     move (keys) {
         if (keys && keys[this.moveLeftKey]) {
             this.moved = true;
@@ -102,7 +95,5 @@ class GamePiece {
             this.moved = true;
             this.y += this.speedY;
         }
-
-
     }
 }

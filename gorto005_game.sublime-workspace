@@ -1,0 +1,579 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"hei",
+				"height"
+			],
+			[
+				"moveDow",
+				"moveDownKey"
+			],
+			[
+				"moveUp",
+				"moveUpKey"
+			],
+			[
+				"moveRight",
+				"moveRightKey"
+			],
+			[
+				"moveL",
+				"moveLeftKey"
+			],
+			[
+				"mo",
+				"moveLeftImages"
+			],
+			[
+				"play",
+				"player1"
+			],
+			[
+				"walk",
+				"walkingLeftImages"
+			],
+			[
+				"move",
+				"moveLeftImages"
+			],
+			[
+				"moveRi",
+				"moveRightImageCount"
+			],
+			[
+				"moveRigh",
+				"moveRightImages"
+			],
+			[
+				"moveLeft",
+				"moveLeftImageCount"
+			],
+			[
+				"moveLef",
+				"moveLeftImage"
+			],
+			[
+				"moveLe",
+				"moveLeftImage"
+			],
+			[
+				"spee",
+				"speedY"
+			],
+			[
+				"speed",
+				"speedX"
+			],
+			[
+				"myGame",
+				"myGamePiece"
+			],
+			[
+				"image",
+				"image"
+			],
+			[
+				"ex",
+				"explodedfile"
+			],
+			[
+				"print",
+				"print_r"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "game.html",
+			"settings":
+			{
+				"buffer_size": 2539,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/davidgorton/Projects/sat-js/examples/dynamic_collision.html",
+			"settings":
+			{
+				"buffer_size": 2385,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/davidgorton/Projects/sat-js/examples/examples.js",
+			"settings":
+			{
+				"buffer_size": 6261,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/davidgorton/Projects/sat-js/examples/simple_collision.html",
+			"settings":
+			{
+				"buffer_size": 2694,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "GamePiece.js",
+			"settings":
+			{
+				"buffer_size": 3170,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "SAT.js",
+			"settings":
+			{
+				"buffer_size": 34459,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "linter",
+		"selected_items":
+		[
+			[
+				"linter",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/davidgorton/Projects/gorto005_game",
+		"/Users/davidgorton/Projects/sat-js"
+	],
+	"file_history":
+	[
+		"/Users/davidgorton/Projects/gorto005_game/SAT.js",
+		"/Users/davidgorton/Projects/manifest.json",
+		"/Users/davidgorton/Desktop/wp-percolate/api/services/percolate-ajax-service.php",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Utils.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/UpdateButtons.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Underscore.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/TestUtils.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Test.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/style.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Sidebar.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Requests.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/PercolateGif.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/PercolateApiTest.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/PercolateApi.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/OAuth2.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/OAuth.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/hierarchySelect.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/DetailsReadOnly.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/DetailsButtons.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Details.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/CreateButtons.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/ContentView.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Content.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Constants.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/ConnectorTest.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Connector.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Code.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/Auth.gs",
+		"/Users/davidgorton/Projects/google-docs-integration/src/AssetManagerWithoutLicense.html",
+		"/Users/davidgorton/Projects/google-docs-integration/src/AssetManager.html",
+		"/Users/davidgorton/Downloads/Percolate Docs.json",
+		"/Users/davidgorton/Desktop/wp-percolate/api/services/percolate-importer-service.php",
+		"/Users/davidgorton/Desktop/wp-percolate/api/services/percolate-sync-service.php",
+		"/Users/davidgorton/Desktop/wp-percolate/api/services/percolate-media-service.php",
+		"/Users/davidgorton/Desktop/wp-percolate/api/services/percolate-api-service.php",
+		"/Users/davidgorton/Desktop/wp-percolate/api/helpers/percolate-helpers.php",
+		"/Users/davidgorton/Desktop/WP_OLD/1.2.4/wordpress-4.x-1.2.4/api/services/percolate-api-service.php",
+		"/Users/davidgorton/Desktop/WP_OLD/1.2.4/wordpress-4.x-1.2.4/api/services/percolate-media-service.php",
+		"/Users/davidgorton/Projects/wordpress/api/models/percolate-metabox-model.php",
+		"/Users/davidgorton/Projects/wordpress/api/services/percolate-sync-service.php",
+		"/Users/davidgorton/Projects/wordpress/api/services/percolate-ajax-service.php",
+		"/Users/davidgorton/Projects/wordpress/api/models/percolate-queue-model.php",
+		"/Users/davidgorton/Projects/wordpress/frontend/scripts/api/api.js",
+		"/Users/davidgorton/Downloads/oupblogpercalt_error_logs-2017-05-31_18-36-01.txt",
+		"/Users/davidgorton/Downloads/oupblog_error_logs-2017-05-31_18-32-26.txt",
+		"/Users/davidgorton/Downloads/oxfordwords_error_logs-2017-05-31_19-41-37.txt",
+		"/Users/davidgorton/Downloads/dictionaries_blog_percolate_log.txt",
+		"/Users/davidgorton/Documents/Integrations/PlatformCreationLifecycle.msc",
+		"/Users/davidgorton/Documents/Integrations/PlatformExtensionLifecycle.msc",
+		"/Users/davidgorton/Projects/pif/spec/common_types.raml",
+		"/Users/davidgorton/Projects/pif/spec/platformconnector.raml",
+		"/Users/davidgorton/Projects/api-rfc/v4/twitter_direct_messages.md",
+		"/Users/davidgorton/Documents/Integrations/oauth-refresh.msc",
+		"/Users/davidgorton/Documents/Integrations/oauth-redirect.msc",
+		"/Users/davidgorton/Projects/pif/doc/oauth-handler.msc",
+		"/Users/davidgorton/Projects/pif/spec/pif_ingestion.raml",
+		"/Users/davidgorton/Projects/pif/spec/pif_ingestion.md",
+		"/Users/davidgorton/Projects/api-rfc/v4/facebook_messages.md",
+		"/Users/davidgorton/Projects/api-rfc/v4/keyword_monitoring.md",
+		"/Users/davidgorton/Projects/api-rfc/v4/vendor/facebook/conversation/messages.md",
+		"/Users/davidgorton/Projects/api-rfc/v4/monitoring_flag.md",
+		"/Users/davidgorton/Documents/Integrations/pif_ingestion.raml",
+		"/Users/davidgorton/Documents/Integrations/common_types.raml",
+		"/Users/davidgorton/Documents/Integrations/platformconnector.raml",
+		"/Users/davidgorton/Documents/Integrations/platformconnector.md",
+		"/Users/davidgorton/Documents/codecovconfig.txt",
+		"/Users/davidgorton/Documents/codecov.yml",
+		"/System/Library/Frameworks/MapKit.framework/Versions/A/Headers/MKMapCamera.h",
+		"/System/Library/Frameworks/AppKit.framework/Versions/C/Headers/NSWindow.h",
+		"/Users/davidgorton/Projects/reusable-integrations/plugins/mailchimp/mailchimp-plugin-application/pom.xml",
+		"/Users/davidgorton/Documents/WordpressPlugin/InstallationConfiguration.msc",
+		"/Users/davidgorton/Documents/WordpressPlugin/ConfigurationChangeMonitoring.msc",
+		"/Users/davidgorton/Documents/WordpressPlugin/WordpressChangeMonitoring.msc",
+		"/Users/davidgorton/Projects/reusable-integrations/README.txt"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"Box",
+			"B",
+			"myGamePiece",
+			"stop",
+			"myGamePiece"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"player1"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "game.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								411,
+								411
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								80
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 19.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/davidgorton/Projects/sat-js/examples/dynamic_collision.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2385,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								177
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/davidgorton/Projects/sat-js/examples/examples.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5917,
+								5899
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2045.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/davidgorton/Projects/sat-js/examples/simple_collision.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2694,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								322,
+								289
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "GamePiece.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								586,
+								586
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								80
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"wrap_width": 80
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "SAT.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 34459,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 1.0,
+						"translation.y": 4098.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "gorto005_game.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 194.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
