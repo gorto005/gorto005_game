@@ -14,7 +14,9 @@ World.prototype = {
         }
     },
     simulate:function(keys) {
-        players.forEach( function(player, index) {
+        // First move all the players
+        for (var i = 0; i < players.length; i++) {
+            var player = players[i];
             var tempx = player.x;
             var tempy = player.y;
             player.move(keys);
@@ -30,7 +32,21 @@ World.prototype = {
             } else if  (player.y > (world.options.worldHeight - player.height)) {
                 player.y = world.options.worldHeight - player.height;
             }
-            console.log(player.x + "," + player.y);
-        });
+            // console.log(player.x + "," + player.y);
+        };
+        // Next, calculate collisions
+        for (var i = 0; i < players.length - 1; i++) {
+            var p1 = players[i];
+            var box1 = new SAT.Box(new SAT.Vector(p1.x, p1.y), p1.width, p1.height);
+            for (var j = i + 1; j < players.length; j++) {
+                var p2 = players[j];
+                var box2 = new SAT.Box(new SAT.Vector(p2.x, p2.y), p2.width, p2.height);
+
+                if (SAT.testPolygonPolygon(box1.toPolygon(), box2.toPolygon())) {
+                    console.log("Collision");
+                }
+            }
+        }
+
     }
 }
