@@ -29,7 +29,7 @@ var players;
 var world = new World();
 var xSpeed = 2;
 var ySpeed = 2;
-var numberOfNPCs = 1;
+var numberOfNPCs = 10;
 // var xDiagonalSpeed = xSpeed / Math.sqrt(2);
 // var yDiagonalSpeed = ySpeed / Math.sqrt(2);
 var mySound;
@@ -51,7 +51,7 @@ function startGame() {
 
     players = [player1, player2];
 
-    for (i = players.length; i < numberOfNPCs + players.length; i++) { 
+    for (i = 2; i < numberOfNPCs; i++) { 
         var npcX = Math.floor(Math.random() * world.options.worldWidth);
         var npcY = Math.floor(Math.random() * world.options.worldHeight)
         npcPlayer = new GamePiece("npc", "sprite1.png", walkingRightImages, 
