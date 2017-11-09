@@ -32,7 +32,6 @@ World.prototype = {
             } else if  (player.y > (world.options.worldHeight - player.height)) {
                 player.y = world.options.worldHeight - player.height;
             }
-            // console.log(player.x + "," + player.y);
         };
         // Next, calculate collisions
         for (var i = 0; i < players.length - 1; i++) {
@@ -41,9 +40,16 @@ World.prototype = {
             for (var j = i + 1; j < players.length; j++) {
                 var p2 = players[j];
                 var box2 = new SAT.Box(new SAT.Vector(p2.x, p2.y), p2.width, p2.height);
+                var response = new SAT.Response();
+                // check the collision
+                if (SAT.testPolygonPolygon(box1.toPolygon(), box2.toPolygon(), response)) {
+                    var oV = response.overlapV;
+                    // If there was a collision, split the overlap between the two plays and move them.
+                    p1.x = p1.x - oV.x/2;
+                    p1.y = p1.y - oV.y/2;
+                    p2.x = p2.x + oV.x/2;
+                    p2.y = p2.y + oV.y/2;
 
-                if (SAT.testPolygonPolygon(box1.toPolygon(), box2.toPolygon())) {
-                    console.log("Collision");
                 }
             }
         }

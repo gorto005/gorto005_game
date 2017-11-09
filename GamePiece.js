@@ -35,6 +35,8 @@ function GamePiece (image,
 
     this.x = x;
     this.y = y;
+    this.lastx = x;
+    this.lasty = y;
 
     this.moved = false;
 
@@ -65,6 +67,8 @@ GamePiece.prototype = {
         this.sound.pause();
     },
     move (keys) {
+        this.lastx = this.x;
+        this.lasty = this.y;
         if (keys && keys[this.moveLeftKey]) {
             this.moved = true;
             this.moveLeftImage.src = this.moveLeftImages[this.moveLeftImageCount];
