@@ -76,9 +76,8 @@ var myGameArea = {
         this.context = this.canvas.getContext("2d");
         div = document.getElementById("world");
         div.appendChild(this.canvas);
-//        document.body.insertAfter(this.canvas, document.body.childNodes[0]);
         this.moveinterval = setInterval(updateGameArea, world.options.interval);
-        this.weaponinterval = setInterval(updateWeapons, 10);
+//        this.weaponinterval = setInterval(updateWeapons, 10);
 
         window.addEventListener('keydown', function (e) {
             e.preventDefault();
@@ -98,8 +97,11 @@ function updateGameArea() {
 
     ctx = myGameArea.context;
     for (var i = 0, len = players.length; i < len; i++) {
-        players[i].update(ctx);
-        world.fireball.update(ctx);
+        world.getFireball().update(ctx);
+
+        if (!players[i].dead) {
+            players[i].update(ctx);
+        }
     }
 }
 
