@@ -23,6 +23,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
         <script src="./SAT.js"></script>
         <script src="./GamePiece.js"></script>
+        <script src="./Fireball.js"></script>
         <script src="./World.js"></script>
         <script>
 var players;
@@ -58,7 +59,6 @@ function startGame() {
                 walkingLeftImages, "gravel1.wav", npcX, npcY, xSpeed, ySpeed,
                 0, 0, 0, 0);
         world.addPlayer(npcPlayer);
-        console.log("added player " + i);
         players[i] = npcPlayer;
     }
 
@@ -74,9 +74,10 @@ var myGameArea = {
         this.canvas.width = world.options.worldWidth;
         this.canvas.height = world.options.worldHeight;
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        div = document.getElementById("world");
+        div.appendChild(this.canvas);
         this.moveinterval = setInterval(updateGameArea, world.options.interval);
-        this.weaponinterval = setInterval(updateWeapons, 10);
+//        this.weaponinterval = setInterval(updateWeapons, 10);
 
         window.addEventListener('keydown', function (e) {
             e.preventDefault();
@@ -96,7 +97,11 @@ function updateGameArea() {
 
     ctx = myGameArea.context;
     for (var i = 0, len = players.length; i < len; i++) {
-        players[i].update(ctx);
+        world.getFireball().update(ctx);
+
+        if (!players[i].dead) {
+            players[i].update(ctx);
+        }
     }
 }
 
@@ -110,5 +115,6 @@ function updateWeapons() {
             <title>IronRealm</title>
             <h1>IronRealm</h1>
         </center>
+        <div id="world"></div>
     </body>
 </html>
