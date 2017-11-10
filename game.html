@@ -99,9 +99,7 @@ function updateGameArea() {
     for (var i = 0, len = players.length; i < len; i++) {
         world.getFireball().update(ctx);
 
-        if (!players[i].dead) {
-            players[i].update(ctx);
-        }
+        players[i].update(ctx);
     }
 }
 
