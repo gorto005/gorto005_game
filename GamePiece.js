@@ -56,10 +56,10 @@ GamePiece.prototype = {
     update:function(ctx) {
         ctx.clearRect(this.lastx-3, this.lasty-3, this.image.width+6, this.image.height+6);
         if (this.dead) {
-            var img = ctx.createImageData(this.image.width, this.image.height);
-            for (var i = img.data.length; --i >= 0; )
-                img.data[i] = 0;
-            this.image = img;
+            // var img = ctx.createImageData(this.image.width, this.image.height);
+            // for (var i = img.data.length; --i >= 0; )
+            //     img.data[i] = 0;
+            // this.image = img;
         }
         ctx.drawImage(this.image, 
             this.x, 
